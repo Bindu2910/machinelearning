@@ -1,1 +1,0 @@
-automated parking system
