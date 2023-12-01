@@ -3,12 +3,31 @@ import datetime
 import sys
 import re
 import time
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore, uic
 
-from PyQt5 import QtCore, QtWidgets, uic
+# Establish a connection
+conn = mysql.connector.connect(
+    host="localhost",
+    user="smoke",
+    password="hellomoto"
+)
 
-mydb = mysql.connector.connect(host = "localhost", user = "smoke", passwd = "hellomoto", database = "car", autocommit=True)
+# Create a cursor
+cursor = conn.cursor()
+
+# Execute the SQL statement
+cursor.execute("GRANT ALL PRIVILEGES ON *.* TO 'smoke'@'localhost' IDENTIFIED BY 'hellomoto';")
+
+# Commit the changes
+conn.commit()
+
+# Close the cursor and connection
+cursor.close()
+conn.close()
+
+mydb = mysql.connector.connector(host = "localhost", user = "smoke", passwd = "hellomoto", database = "car", autocommit=True)
 mycursor = mydb.cursor()
-
 mycursor.execute("DROP TABLE slot")
 mycursor.execute("DROP TABLE duration")
 mycursor.execute("DROP TABLE entry")
