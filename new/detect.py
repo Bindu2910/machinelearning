@@ -1,11 +1,13 @@
 
 import numpy as np
-import cv2 
+import cv2 as cv2
+import scipy
 import  imutils
-import pytesseract
+import pytesseract as pytesseract
 import pandas as pd
 import time
 import mysql.connector
+
 import datetime
 import sys
 import re
